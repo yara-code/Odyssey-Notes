@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Mainpage() {
   return (
     <View>
-        <Text>fuck yara alot!!</Text>
+        <Text>BIg Titty Yara ( . Y . )</Text>
     </View>
   );
 }
