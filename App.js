@@ -12,13 +12,33 @@ import { StyleSheet } from 'react-native';
 const Stack = createStackNavigator();
 
 
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
+
 export default function App() {
   return (
       <ApplicationProvider {...eva} theme={eva.dark}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home" headerMode="screen">
-            <Stack.Screen name='Home' component={Mainpage} />
-            <Stack.Screen name='Notes' component={Notes} />
+          <Stack.Navigator 
+            initialRouteName="Home"
+            headerMode="screen"
+            screenOptions={{
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: 'tomato' },
+            }}>
+
+            <Stack.Screen name='Home' options={{ title: 'Odyssey Notes'}} component={Mainpage} />
+            <Stack.Screen 
+              name='Notes' 
+              component={Notes}
+              options={{
+                cardStyleInterpolator: forFade
+              }} />
+
+
           </Stack.Navigator>
         </NavigationContainer>
         
