@@ -1,42 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, onChangeNumber, Button, TouchableOpacity } from 'react-native';
-import { Icon } from 'react-native-elements'
 
+import React from 'react';
+import { View, Button } from 'react-native';
+import { Icon } from 'react-native-elements'
+import * as eva from '@eva-design/eva';
+import { Layout, Text } from '@ui-kitten/components';
+import {TextInput} from 'react-native';
 
 const Notes = () => {
     const [text, onChangeText] = React.useState("Useless Text");
     const [number, onChangeNumber] = React.useState(null);
 
   return (
-    <View >
-        <View style = {styles.idk}> 
-            <Icon name='arrow-left'type='evilicon'color='#517fa4'/>
-            <TextInput placeholder = 'Title' style = {styles.container}></TextInput>
-        </View>
+    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Icon name='arrow-left'type='evilicon'color='#517fa4'/>
+      <Button title="Main Menu" onPress={() => navigation.goBack()} />
+
+      <TextInput placeholder = 'Title'></TextInput>
     
-       <TextInput
-        style={styles.input}
+      <TextInput
         onChangeText={onChangeText}
         value={text}
-      ></TextInput>
-    </View>
+        > 
+      </TextInput>
+    </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: '80%',
-  },
-  idk: {
-    flexDirection: 'row'
-  },
-});
 
 export default Notes;

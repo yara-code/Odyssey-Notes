@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text,View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function Mainpage() {
+export default function Mainpage({navigation}) {
   return (
     <View>
         <Text>BIg Titty Yara ( . Y . )</Text>
+        <Button title="New Notes" onPress={() => navigation.navigate('Notes')}>
+        </Button>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  
-});
