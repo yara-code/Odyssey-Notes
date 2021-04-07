@@ -21,7 +21,11 @@ const styles = StyleSheet.create({
     container: {
       flexDirection: 'column',
       alignItems: 'center',
+<<<<<<< HEAD
       marginVertical: 0,
+=======
+      marginVertical: 4,
+>>>>>>> dev
       backgroundColor: '#192a56',
       justifyContent: 'center',
     },

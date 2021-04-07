@@ -1,12 +1,15 @@
-
 import React from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider} from '@ui-kitten/components';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Notes from './components/Notes';
+import CreateNotes from './components/CreateNotes';
 import Mainpage from './components/Mainpage';
 import Settings from './components/Settings';
+<<<<<<< HEAD
+=======
+import Note from './components/Note';
+>>>>>>> dev
 import { StyleSheet } from 'react-native';
 
 
@@ -35,7 +38,20 @@ export default function App() {
 
             <Stack.Screen 
               name='Notes' 
-              component={Notes}
+              component={CreateNotes}
+              options={{
+                cardStyleInterpolator: forFade
+              }} />
+              <Stack.Screen 
+              name='Note' 
+              component={Note}
+              options={{
+                cardStyleInterpolator: forFade
+              }} />
+
+              <Stack.Screen 
+              name='Settings' 
+              component={Settings}
               options={{
                 cardStyleInterpolator: forFade
               }} />
