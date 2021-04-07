@@ -1,11 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
-import { Divider, List, ListItem, Text, BottomNavigation } from "@ui-kitten/components"
+import { Button, Text } from "@ui-kitten/components"
 import React, { useState } from "react"
-import { StyleSheet, View, Button } from "react-native"
+import { StyleSheet, View } from "react-native"
 
-export default function Mainpage() {
+export default function CreateNotes({ route }) {
 	const [ notes, setNotes ] = useState([])
+	const { singleNote } = route.params
 	const navigation = useNavigation()
 
 	useFocusEffect(
@@ -20,38 +21,33 @@ export default function Mainpage() {
 		})
 	}
 
-	const renderItem = ({ item, index }) => (
-		<ListItem
-			title={<Text category="h5">{item}</Text>}
-			onPress={() =>
-				navigation.navigate("Notes", {
-					singleNote: item
-				})}
-		/>
-	)
+	const deleteNote = async () => {
+		const newNotes = await notes.filter((note) => note !== singleNote)
+		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate("AllNotes"))
+	}
 
 	return (
 		<View style={{ backgroundColor: "#222B45", flex: 1 }}>
 			<Text style={styles.title} category="h1">
 				Notes
 			</Text>
-			<List
-				style={styles.container}
-				data={notes}
-				ItemSeparatorComponent={Divider}
-				renderItem={renderItem}
-			/>
-			<Button title="New Notes" onPress={() => navigation.navigate('Notes')}/>
-			<Button title="Settings" onPress={() => navigation.navigate('Settings')}/>
+			<Text style={{ fontSize: 22, margin: 20 }}>{singleNote}</Text>
+			<View style={styles.bottom}>
+				<Button onPress={deleteNote} style={styles.button}>
+					Delete
+				</Button>
+			</View>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		fontSize: 20
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center"
 	},
-
 	item: {
 		marginVertical: 4
 	},
