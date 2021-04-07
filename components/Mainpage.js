@@ -6,7 +6,7 @@ import { StyleSheet, View, Button } from "react-native"
 
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
-	const navigation = useNavigation()
+	const navigation = useNavigation();
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -24,7 +24,7 @@ export default function Mainpage() {
 		<ListItem
 			title={<Text category="h5">{item}</Text>}
 			onPress={() =>
-				navigation.navigate("Notes", {
+				navigation.navigate("Note", {
 					singleNote: item
 				})}
 		/>
@@ -37,11 +37,11 @@ export default function Mainpage() {
 			</Text>
 			<List
 				style={styles.container}
-				data={notes}
+				data={notes.reverse()}
 				ItemSeparatorComponent={Divider}
 				renderItem={renderItem}
 			/>
-			<Button title="New Notes" onPress={() => navigation.navigate('Notes')}/>
+			<Button title="New Notes" onPress={() => navigation.navigate('CreateNotes')}/>
 			<Button title="Settings" onPress={() => navigation.navigate('Settings')}/>
 		</View>
 	)

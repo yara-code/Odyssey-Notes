@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Button } from "@ui-kitten/components"
 import { useNavigation } from "@react-navigation/native"
+import { Button } from "@ui-kitten/components"
 import React, { useState } from "react"
 import { Dimensions, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native"
 
@@ -12,13 +12,12 @@ export default function CreateNote() {
 		const value = await AsyncStorage.getItem("NOTES")
 		const n = value ? JSON.parse(value) : []
 		n.push(note)
-		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate("Home"))
+		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate("AllNotes"))
 		setNote("")
 	}
 
 	return (
 		<View style={styles.container}>
-			<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>Create Note</Button>
 			<TextInput
 				value={note}
 				onChangeText={setNote}
@@ -27,9 +26,10 @@ export default function CreateNote() {
 				autoFocus
 				selectionColor="#fff"
 			/>
-
 			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
-
+				<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>
+					Create Note
+				</Button>
 			</KeyboardAvoidingView>
 		</View>
 	)

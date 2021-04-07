@@ -23,7 +23,7 @@ export default function Note({ route }) {
 
 	const deleteNote = async () => {
 		const newNotes = await notes.filter((note) => note !== singleNote)
-		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate("AllNotes"))
+		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate("Home"))
 	}
 
 	return (

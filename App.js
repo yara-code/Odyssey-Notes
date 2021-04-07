@@ -34,12 +34,13 @@ export default function App() {
             <Stack.Screen name='Home' options={{ title: 'Odyssey Notes'}} component={Mainpage} />
 
             <Stack.Screen 
-              name='Notes' 
+              name='CreateNotes' 
               component={CreateNotes}
               options={{
                 cardStyleInterpolator: forFade
               }} />
-              <Stack.Screen 
+
+            <Stack.Screen 
               name='Note' 
               component={Note}
               options={{
