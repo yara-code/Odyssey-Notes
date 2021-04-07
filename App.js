@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Notes from './components/Notes';
 import Mainpage from './components/Mainpage';
+import Settings from './components/Settings';
 import { StyleSheet } from 'react-native';
 
 
@@ -31,9 +32,17 @@ export default function App() {
             }}>
 
             <Stack.Screen name='Home' options={{ title: 'Odyssey Notes'}} component={Mainpage} />
+
             <Stack.Screen 
               name='Notes' 
               component={Notes}
+              options={{
+                cardStyleInterpolator: forFade
+              }} />
+
+              <Stack.Screen 
+              name='Settings' 
+              component={Settings}
               options={{
                 cardStyleInterpolator: forFade
               }} />
@@ -49,18 +58,3 @@ export default function App() {
 const styles = StyleSheet.create({
   
 });
-
-
-// import React from 'react';
-// import * as eva from '@eva-design/eva';
-// import { ApplicationProvider} from '@ui-kitten/components';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import Notes from './components/Notes'
-
-
-// export default () => (
-//   <ApplicationProvider {...eva} theme={eva.dark}>
-    
-//     <Notes></Notes>
-//   </ApplicationProvider>
-// );

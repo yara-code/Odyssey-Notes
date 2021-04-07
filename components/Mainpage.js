@@ -7,8 +7,9 @@ export default function Mainpage({navigation}) {
   return (
     <View>
         <Text>BIg Titty Yara ( . Y . )</Text>
-        <Button title="New Notes" onPress={() => navigation.navigate('Notes')}>
-        </Button>
+        <Button title="New Notes" onPress={() => navigation.navigate('Notes')}></Button>
+        <Button title="Settings" onPress={() => navigation.navigate('Settings')}></Button>
+        
     </View>
   );
 }
