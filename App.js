@@ -6,15 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CreateNotes from './components/CreateNotes';
 import Mainpage from './components/Mainpage';
 import Settings from './components/Settings';
-<<<<<<< HEAD
-=======
 import Note from './components/Note';
->>>>>>> dev
-import { StyleSheet } from 'react-native';
-
+import { SevtyleSheet } from 'react-native';
 
 const Stack = createStackNavigator();
-
 
 const forFade = ({ current }) => ({
   cardStyle: {
@@ -37,11 +32,12 @@ export default function App() {
             <Stack.Screen name='Home' options={{ title: 'Odyssey Notes'}} component={Mainpage} />
 
             <Stack.Screen 
-              name='Notes' 
+              name='CreateNotes' 
               component={CreateNotes}
               options={{
                 cardStyleInterpolator: forFade
               }} />
+              
               <Stack.Screen 
               name='Note' 
               component={Note}
@@ -56,14 +52,6 @@ export default function App() {
                 cardStyleInterpolator: forFade
               }} />
 
-              <Stack.Screen 
-              name='Settings' 
-              component={Settings}
-              options={{
-                cardStyleInterpolator: forFade
-              }} />
-
-
           </Stack.Navigator>
         </NavigationContainer>
         
@@ -71,6 +59,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  
-});

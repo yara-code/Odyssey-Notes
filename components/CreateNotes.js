@@ -1,42 +1,37 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect, useNavigation } from "@react-navigation/native"
-import { Button, Text } from "@ui-kitten/components"
+import { useNavigation } from "@react-navigation/native"
+import { Button } from "@ui-kitten/components"
 import React, { useState } from "react"
-import { StyleSheet, View } from "react-native"
+import { Dimensions, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native"
 
-export default function CreateNotes({ route }) {
-	const [ notes, setNotes ] = useState([])
-	const { singleNote } = route.params
+export default function CreateNote() {
+	const [ note, setNote ] = useState("")
 	const navigation = useNavigation()
 
-	useFocusEffect(
-		React.useCallback(() => {
-			getNotes()
-		}, [])
-	)
-
-	const getNotes = () => {
-		AsyncStorage.getItem("NOTES").then((notes) => {
-			setNotes(JSON.parse(notes))
-		})
-	}
-
-	const deleteNote = async () => {
-		const newNotes = await notes.filter((note) => note !== singleNote)
-		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate("AllNotes"))
+	const saveNote = async () => {
+		const value = await AsyncStorage.getItem("NOTES")
+		const n = value ? JSON.parse(value) : []
+		n.push(note)
+		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate("Home"))
+		setNote("")
 	}
 
 	return (
-		<View style={{ backgroundColor: "#222B45", flex: 1 }}>
-			<Text style={styles.title} category="h1">
-				Notes
-			</Text>
-			<Text style={{ fontSize: 22, margin: 20 }}>{singleNote}</Text>
-			<View style={styles.bottom}>
-				<Button onPress={deleteNote} style={styles.button}>
-					Delete
-				</Button>
-			</View>
+		<View style={styles.container}>
+			<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>
+					Create Note
+			</Button>
+			<TextInput
+				value={note}
+				onChangeText={setNote}
+				style={{ color: "#fff", fontSize: 22 }}
+				multiline={true}
+				autoFocus
+				selectionColor="#fff"
+			/>
+			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
+				
+			</KeyboardAvoidingView>
 		</View>
 	)
 }
@@ -44,18 +39,19 @@ export default function CreateNotes({ route }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center"
+		backgroundColor: "#222B45",
+		color: "white",
+		padding: 30,
+		paddingTop: 80,
+
+		width: Dimensions.get("window").width
 	},
-	item: {
-		marginVertical: 4
+	bottom: {
+		flex: 1,
+		justifyContent: "flex-end",
+		marginBottom: 36
 	},
-	title: {
-		textAlign: "center",
-		marginTop: 50
-	},
-	notes: {
-		fontSize: 24
+	button: {
+		marginBottom: 30
 	}
 })
