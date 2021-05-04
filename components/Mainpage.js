@@ -66,8 +66,6 @@ export default function Mainpage() {
 				renderItem={renderItem}
 				numColumns='2'
 			/>
-			<Button title="New Notes" onPress={() => navigation.navigate('CreateNotes')}/>
-			<Button title="Settings" onPress={() => navigation.navigate('Settings')}/>
 		</View>
 	)
 }
