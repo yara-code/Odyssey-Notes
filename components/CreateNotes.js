@@ -29,14 +29,8 @@ export default function CreateNote() {
 				autoFocus
 				selectionColor="#fff"
 			/>
-<<<<<<< HEAD
 			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
 				
-=======
-
-			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
-
->>>>>>> 09a7df81e23b80e419b52995979266926dd75f07
 			</KeyboardAvoidingView>
 		</View>
 	)
