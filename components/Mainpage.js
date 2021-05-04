@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements'
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
-	const navigation = useNavigation()
+	const navigation = useNavigation();
 
 	useFocusEffect(
 		React.useCallback(() => {
