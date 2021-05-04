@@ -2,7 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native"
 import { Button } from "@ui-kitten/components"
 import React, { useState } from "react"
-import { Dimensions, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native"
+import { Pressable } from 'react-native';
+import { Dimensions,Text, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native"
+import { Icon } from 'react-native-elements'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function CreateNote() {
 	const [ note, setNote ] = useState("")
@@ -16,22 +19,36 @@ export default function CreateNote() {
 		setNote("")
 	}
 
+	const changeHandler = () => {
+
+	}
+
 	return (
 		<View style={styles.container}>
-			<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>
-					Create Note
-			</Button>
+
+			<View style={styles.top}>
+
+				<Icon
+					style={styles.btn}
+					name='save'
+					type='font-awesome'
+					color='#ff9f1a'
+					size= '35'
+					onPress={saveNote}
+				/>
+			</View>
+			
+			
 			<TextInput
 				value={note}
 				onChangeText={setNote}
-				style={{ color: "#fff", fontSize: 22 }}
+				style={{ color: "black", fontSize: 20 }}
 				multiline={true}
 				autoFocus
-				selectionColor="#fff"
-			/>
-			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
-				
-			</KeyboardAvoidingView>
+				maxLength= '610'
+				selectionColor='#ff9f1a'
+			/>	
+			
 		</View>
 	)
 }
@@ -39,19 +56,35 @@ export default function CreateNote() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#222B45",
+		backgroundColor: '#c8d6e5',
 		color: "white",
-		padding: 30,
-		paddingTop: 80,
+		padding: 10,
+		paddingTop: 10,
+	},
+	
+	top: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly'
+	},
 
-		width: Dimensions.get("window").width
+	topTxt: {
+		fontSize: 18,
+		fontWeight: 'bold',
+		marginVertical: 20
 	},
-	bottom: {
-		flex: 1,
-		justifyContent: "flex-end",
-		marginBottom: 36
+
+	btn: {
+		backgroundColor: '#222f3e',
+		marginLeft: 'auto',
+		padding: 10,
+		borderRadius: 100,
 	},
-	button: {
-		marginBottom: 30
+
+	card: {
+		padding: 5,
+		width: 40,
+		height: 60,
+		borderRadius: 10,
+		backgroundColor: '#f0932b'
 	}
 })
