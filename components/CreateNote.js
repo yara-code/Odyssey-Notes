@@ -12,15 +12,12 @@ export default function CreateNote() {
 		const value = await AsyncStorage.getItem("NOTES")
 		const n = value ? JSON.parse(value) : []
 		n.push(note)
-		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate("Home"))
+		await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => navigation.navigate("AllNotes"))
 		setNote("")
 	}
 
 	return (
 		<View style={styles.container}>
-			<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>
-					Create Note
-			</Button>
 			<TextInput
 				value={note}
 				onChangeText={setNote}
@@ -29,14 +26,10 @@ export default function CreateNote() {
 				autoFocus
 				selectionColor="#fff"
 			/>
-<<<<<<< HEAD
 			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
-				
-=======
-
-			<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.bottom}>
-
->>>>>>> 09a7df81e23b80e419b52995979266926dd75f07
+				<Button style={StyleSheet.button} appearance="filled" onPress={saveNote}>
+					Create Note
+				</Button>
 			</KeyboardAvoidingView>
 		</View>
 	)

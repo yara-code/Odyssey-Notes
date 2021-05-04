@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements'
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
-	const navigation = useNavigation()
+	const navigation = useNavigation();
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -60,15 +60,14 @@ export default function Mainpage() {
 			
 
 			<List
-				style={styles.notescontainer}
-				data={notes}
-				// ItemSeparatorComponent={Divider}
+				style={styles.container}
+				data={notes.reverse()}
+				ItemSeparatorComponent={Divider}
 				renderItem={renderItem}
 				numColumns='2'
 			/>
-
-			
-			
+			<Button title="New Notes" onPress={() => navigation.navigate('CreateNotes')}/>
+			<Button title="Settings" onPress={() => navigation.navigate('Settings')}/>
 		</View>
 	)
 }
