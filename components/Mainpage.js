@@ -60,12 +60,15 @@ export default function Mainpage() {
 			
 
 			<List
-				style={styles.container}
-				data={notes.reverse()}
-				ItemSeparatorComponent={Divider}
+				style={styles.notescontainer}
+				data={notes}
+				// ItemSeparatorComponent={Divider}
 				renderItem={renderItem}
 				numColumns='2'
 			/>
+
+			
+			
 		</View>
 	)
 }
