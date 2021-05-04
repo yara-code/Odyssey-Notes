@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
-import { Divider, List, ListItem, Text, BottomNavigation } from "@ui-kitten/components"
+import { Divider, List, ListItem,FlatList, Text, BottomNavigation } from "@ui-kitten/components"
 import React, { useState } from "react"
+import { Pressable } from 'react-native';
 import { StyleSheet, View, Button } from "react-native"
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Icon } from 'react-native-elements'
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
 	const navigation = useNavigation()
@@ -22,7 +24,8 @@ export default function Mainpage() {
 
 	const renderItem = ({ item, index }) => (
 		<ListItem
-			title={<Text category="h5">{item}</Text>}
+			style={styles.notesItem}
+			title={<Text style={styles.notesTxt} category="h5">{item}</Text>}
 			onPress={() =>
 				navigation.navigate("Note", {
 					singleNote: item
@@ -30,35 +33,102 @@ export default function Mainpage() {
 		/>
 	)
 
+
 	return (
-		<View style={{ backgroundColor: "#222B45", flex: 1 }}>
-			<Text style={styles.title} category="h1">
-				Notes
-			</Text>
+		<View style={styles.mainView }>
+			<Text style={styles.title}> My Notes </Text>
+				<View style={styles.btnView}>
+					<Icon
+						style={styles.btn}
+						name='plus-square'
+						type='font-awesome'
+						color='#ff9f1a'
+						size= '45'
+						onPress={() => navigation.navigate('CreateNotes')}
+					/>
+
+					<Icon
+						style={styles.btn}
+						name='cog'
+						size= '45'
+						type='font-awesome'
+						color='#ff9f1a'
+						onPress={() => navigation.navigate('Settings')}
+					/>
+				</View>
+				
+			
+
 			<List
-				style={styles.container}
+				style={styles.notescontainer}
 				data={notes}
-				ItemSeparatorComponent={Divider}
+				// ItemSeparatorComponent={Divider}
 				renderItem={renderItem}
+				numColumns='2'
 			/>
-			<Button title="New Notes" onPress={() => navigation.navigate('CreateNotes')}/>
-			<Button title="Settings" onPress={() => navigation.navigate('Settings')}/>
+
+			
+			
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {
-		fontSize: 20
+	mainView: {
+		backgroundColor: "#222f3e", 
+		flex: 1
+	},
+
+	notescontainer: {
+		backgroundColor: '#222f3e',
 	},
 
 	item: {
 		marginVertical: 4
 	},
+
+	notesItem: {
+		width: 150,
+		height: 250,
+		margin: 10,
+		borderRadius: 15,
+		borderColor: '#ff9f1a',
+		borderWidth: 3,
+		backgroundColor: '#c8d6e5',
+		marginRight: 'auto',
+		marginLeft: 'auto'
+	},
+
+	notesTxt: {
+		fontSize: 12,
+		color: 'black',
+	},
+
+	btnView: {
+		flexDirection: 'row',
+		margin: 5,
+		padding: 10,
+		justifyContent: 'space-evenly'
+
+	},
+
+	btn: {
+		margin: 5,
+	},
+
+	btnTxt: {
+		textAlign: 'center'
+	},
+
 	title: {
 		textAlign: "center",
-		marginTop: 50
+		marginTop: 20,
+		fontSize: 50,
+		color: '#ff9f1a',
+		fontWeight: 'bold',
+	
 	},
+
 	notes: {
 		fontSize: 24
 	}
