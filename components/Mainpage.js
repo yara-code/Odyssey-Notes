@@ -53,7 +53,7 @@ export default function Mainpage() {
 						size= '45'
 						type='font-awesome'
 						color='#ff9f1a'
-						onPress={() => navigation.navigate('Settings')}
+						onPress={() => navigation.navigate('News')}
 					/>
 				</View>
 				
