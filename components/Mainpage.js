@@ -49,9 +49,9 @@ export default function Mainpage() {
 
 					<Icon
 						style={styles.btn}
-						name='cog'
+						name='newspaper'
 						size= '45'
-						type='font-awesome'
+						type='ionicon'
 						color='#ff9f1a'
 						onPress={() => navigation.navigate('News')}
 					/>
