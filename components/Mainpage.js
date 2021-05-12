@@ -2,10 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { Divider, List, ListItem,FlatList, Text, BottomNavigation } from "@ui-kitten/components"
 import React, { useState } from "react"
-import { Pressable } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { StyleSheet, View, Button } from "react-native"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements'
+
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
 	const navigation = useNavigation();
@@ -21,11 +22,14 @@ export default function Mainpage() {
 			setNotes(JSON.parse(notes))
 		})
 	}
+	const image= {uri: "https://thumbs.dreamstime.com/b/grid-paper-abstract-striped-background-color-horizontal-lines-geometric-seamless-pattern-school-wallpaper-textures-grid-184815619.jpg" }
 
 	const renderItem = ({ item, index }) => (
 		<ListItem
 			style={styles.notesItem}
-			title={<Text style={styles.notesTxt} category="h5">{item}</Text>}
+			title={	<ImageBackground source={image} style={styles.image}>
+						<Text style={styles.notesTxt} category="h5">{item}</Text>
+					</ImageBackground>}
 			onPress={() =>
 				navigation.navigate("Note", {
 					singleNote: item
@@ -33,16 +37,26 @@ export default function Mainpage() {
 		/>
 	)
 
+	async function newsButtonHandler() {
+        let res = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f5037afaa4c647dfa836977a061e09e8')
+        const data = await res.json()
+		
+		const newsfeed = data.articles
+		// console.log(newsfeed)
+		navigation.navigate('News', {newsfeed})
+		
+    }
+    
 
 	return (
 		<View style={styles.mainView }>
-			<Text style={styles.title}> My Notes </Text>
+			<Text style={styles.title}> Odyssey Notes </Text>
 				<View style={styles.btnView}>
 					<Icon
 						style={styles.btn}
 						name='plus-square'
 						type='font-awesome'
-						color='#ff9f1a'
+						color='#5f27cd'
 						size= '45'
 						onPress={() => navigation.navigate('CreateNotes')}
 					/>
@@ -52,8 +66,8 @@ export default function Mainpage() {
 						name='newspaper'
 						size= '45'
 						type='ionicon'
-						color='#ff9f1a'
-						onPress={() => navigation.navigate('News')}
+						color='#5f27cd'
+						onPress={newsButtonHandler}
 					/>
 				</View>
 				
@@ -75,12 +89,12 @@ export default function Mainpage() {
 
 const styles = StyleSheet.create({
 	mainView: {
-		backgroundColor: "#222f3e", 
+		backgroundColor: "black", 
 		flex: 1
 	},
 
 	notescontainer: {
-		backgroundColor: '#222f3e',
+		backgroundColor: 'black',
 	},
 
 	item: {
@@ -88,11 +102,11 @@ const styles = StyleSheet.create({
 	},
 
 	notesItem: {
-		width: 150,
-		height: 250,
+		width: 170,
+		height: 270,
 		margin: 10,
 		borderRadius: 15,
-		borderColor: '#ff9f1a',
+		borderColor: '#5f27cd',
 		borderWidth: 3,
 		backgroundColor: '#c8d6e5',
 		marginRight: 'auto',
@@ -120,11 +134,19 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 
+	image: {
+		borderRadius: 100,
+		width: 130,
+		height: 230,
+		resizeMode: 'cover',
+		justifyContent: 'center',
+	},
+
 	title: {
 		textAlign: "center",
 		marginTop: 20,
-		fontSize: 50,
-		color: '#ff9f1a',
+		fontSize: 40,
+		color: '#5f27cd',
 		fontWeight: 'bold',
 	
 	},

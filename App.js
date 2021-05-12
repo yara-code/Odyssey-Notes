@@ -26,12 +26,12 @@ export default function App() {
             initialRouteName="Home"
             headerMode="screen"
             screenOptions={{
-            headerTintColor: 'white',
-            headerStyle: { backgroundColor: '#222f3e' },
+            headerTintColor: 'purple',
+            headerStyle: { backgroundColor: '#00a8ff' },
             }}
             >
 
-            <Stack.Screen name='Home' options={{ title: 'Odyssey Note App'}} component={Mainpage} />
+            <Stack.Screen name='Home' options={{title: 'Odyssey Notes'}} component={Mainpage} />
 
             <Stack.Screen 
               name='CreateNotes' 
