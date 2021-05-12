@@ -1,98 +1,101 @@
 import React, { useState, useEffect } from 'react'
-import {View, StyleSheet, Text, ActivityIndicator, FlatList,Dimensions} from 'react-native'
+import {View, StyleSheet, Text, ActivityIndicator, FlatList,Dimensions, Image} from 'react-native'
 const {width,height} = Dimensions.get('window')
 
 
-export default function News() {
-    let [news, setNews] = useState([])
-    let [loading, setLoading] = useState('true')
+export default function News(props) {
+    console.log(props)
+    let resultPacket = props.route.params.newsfeed
+    let resultsArray = resultPacket;
 
-    const setLoadingHandler = (text) => {
-        setLoading(text)
-    }
-
-    const Newsfeed = () => {
-        <FlatList
-            data={news}
-            renderItem={({item})=>{
-                return(
-                    <View style ={{width:width-50,height:180,backgroundCOlor:'#fff',marginBottom:15}}>
-
-                    </View>
-                )}}
-        />
-    }
-
-    const getNews = async () => {
-        let res = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f5037afaa4c647dfa836977a061e09e8')
-        const data = await res.json()
-                
-                console.log(data)
-
-                setNews.apply(data.articles)
-
-                console.log('News Array ' + news)
-
-                setLoadingHandler = 'false'
-    }
-
-
-    useEffect(
-        () => {
-            let interval;     
-
-            interval = setInterval(() => {
-                
-                newshandlers();
-            
-                    if(loading){
-                        return (
-                            <View Style= {{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'#333'}}>
-                                <ActivityIndicator size='large' colors='#fff'/>
-                            </View> 
-                        );
-                    }
-                    else{
-                        return(
-                                
-                                    <FlatList
-                                        data={news}
-                                        renderItem={({item})=>{
-                                        return(
-                                            <View style ={{width:width-50,height:180,backgroundCOlor:'#fff',marginBottom:15}}>
-
-                                            </View>
-                                        )}}
-                                    />
-                                         
-                        )
-                    }
-                
-            },10000)
-            
-            return () => clearInterval(interval);
-        });
-    
-    return(
+    const Item = ({data}) => (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={{fonmtSize:25, color:'#fff'}}>Top Headline</Text>
-                <Text style={{fontSize:35,color:'#fff'}}>Headline</Text>
-            
-            </View>
-            <View style={styles.news}> 
-                
-            </View>
+            <Image style={styles.poster} source={{uri: data.urlToImage}}/>
+            <Text>{data.content}</Text>
+            {/* <Text style={styles.title}>{data.author}</Text>
+            <Text style={styles.title}>{data.description}</Text>
+            <Text style={styles.title}>{data.publishedAt}</Text>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.title}>{data.url}</Text> */}
         </View>
     )
-    
+
+    const renderList = ({item}) => <Item data={item} />;
+
+    return (
+        <View>
+            <View style={styles.safeareaview}>
+                <FlatList
+                    data={resultsArray}
+                    renderItem={renderList}
+                />
+            </View> 
+        </View>
         
+    )
 }
 
 const styles = StyleSheet.create({
-
+    safeareaview: {
+        backgroundColor: '#bdc3c7',
+        padding: 20
+    },
     container: {
-        flex: 1,
-        backgroundColor:'#333'
-    }
+        alignContent: 'center',
+        margin: 20,
+        backgroundColor: '#273c75',
+        borderStyle: 'solid',
+        borderWidth:3,
+        borderRadius: 20,
+    },
+    poster: {
+        width: 230,
+        height: 300,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginBottom: 20,
+    },
 })
+// useEffect( () => {
+    //         async function fetchData() {
+    //             let res = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=f5037afaa4c647dfa836977a061e09e8')
+    //             const data = await res.json()
+    //             setNews(data.articles)
+        
+    //             setLoadingHandler = 'false'
+    //         }
+
+    //         let interval;   
+            
+
+    //         const Item = ({data}) => (
+    //             <View>
+    //                 <Text>HELLLLOOOO</Text>
+    //             </View>
+    //         )
+
+            // const renderNewsList = ({item}) => <Item data={item} />;
+
+    //         interval = setInterval(() => {
+                            
+    //                 if(loading){
+    //                     return (
+    //                         <View Style= {{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'#333'}}>
+    //                             <ActivityIndicator size='large' colors='#fff'/>
+    //                         </View> 
+    //                     );
+    //                 }
+    //                 else{
+    //                     return(    
+    //                         <FlatList
+    //                             data={resultsArray}
+    //                             renderItem={renderNewsList}
+                                
+    //                         />  
+    //                     )
+    //                 }
+                
+    //         },500000)
+            
+    //         return () => clearInterval(interval);
+    // });
