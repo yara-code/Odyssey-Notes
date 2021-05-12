@@ -1,15 +1,14 @@
 import React from 'react'
 import {View, StyleSheet, Text, ActivityIndicator, FlatList,Dimensions} from 'react-native'
 const {width,height} = Dimensions.get('window')
+console
 export default class News extends React.Component{
-    
     
      state={
             news:[],
             loading: true
         }
     
-
     fetchnews = () => {
         fetch('GET https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY=3ddc86bc606a4606bea5004e0614a6cf')
         .then((res)=>res.json())
@@ -57,14 +56,15 @@ export default class News extends React.Component{
         }
     }
 }
-
 const styles = StyleSheet.create({
-
     container : {
         flex: 1,
         backgroundColor:'#333'
+    },
+    header:{
+        padding:30
+    },
+    news:{
+        alignSelf: 'center'
     }
-
-
-
 })
