@@ -7,6 +7,8 @@ import { StyleSheet, View, Button } from "react-native"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements'
 
+import {LinearGradient} from 'expo-linear-gradient'
+
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
 	const navigation = useNavigation();
@@ -25,16 +27,21 @@ export default function Mainpage() {
 	const image= {uri: "https://thumbs.dreamstime.com/b/grid-paper-abstract-striped-background-color-horizontal-lines-geometric-seamless-pattern-school-wallpaper-textures-grid-184815619.jpg" }
 
 	const renderItem = ({ item, index }) => (
-		<ListItem
+		<LinearGradient
+			colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
 			style={styles.notesItem}
-			title={	<ImageBackground source={image} style={styles.image}>
-						<Text style={styles.notesTxt} category="h5">{item}</Text>
-					</ImageBackground>}
-			onPress={() =>
+		>
+
+			<TouchableOpacity onPress={() =>
 				navigation.navigate("Note", {
-					singleNote: item
-				})}
-		/>
+				singleNote: item
+			})}>
+				<ImageBackground source={image} style={styles.image} >
+					<Text style={styles.notesTxt} category="h5">{item}</Text>
+				</ImageBackground>
+			</TouchableOpacity>
+		</LinearGradient>
 	)
 
 	async function newsButtonHandler() {
@@ -49,8 +56,17 @@ export default function Mainpage() {
 
 	return (
 		<View style={styles.mainView }>
-			<Text style={styles.title}> Odyssey Notes </Text>
+			
+			<LinearGradient
+			colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+			
+			>
+				<Text style={styles.title}> Odyssey Notes </Text>
+			</LinearGradient>
+			
 				<View style={styles.btnView}>
+					<Text style={styles.headerText}> New Notes: </Text>
 					<Icon
 						style={styles.btn}
 						name='plus-square'
@@ -60,6 +76,7 @@ export default function Mainpage() {
 						onPress={() => navigation.navigate('CreateNotes')}
 					/>
 
+					<Text style={styles.headerText}> News: </Text>
 					<Icon
 						style={styles.btn}
 						name='newspaper'
@@ -78,12 +95,10 @@ export default function Mainpage() {
 					/>
 				</View>
 				
-			
 
 			<List
 				style={styles.notescontainer}
 				data={notes}
-				// ItemSeparatorComponent={Divider}
 				renderItem={renderItem}
 				numColumns='2'
 			/>
@@ -99,27 +114,33 @@ const styles = StyleSheet.create({
 
 	notescontainer: {
 		backgroundColor: 'black',
+		marginRight: 'auto',
+		marginLeft: 'auto'
 	},
 
 	item: {
 		marginVertical: 4
 	},
 
+	headerText: {
+		fontSize: 24,
+		marginVertical: 8,
+		borderRadius: 15,
+		borderWidth: 1,
+		borderBottomColor: 'red',
+		borderColor: '#5f27cd',
+		padding: 5
+	},
+
 	notesItem: {
-		width: 170,
-		height: 270,
 		margin: 10,
 		borderRadius: 15,
-		borderColor: '#5f27cd',
-		borderWidth: 3,
-		backgroundColor: '#c8d6e5',
-		marginRight: 'auto',
-		marginLeft: 'auto'
 	},
 
 	notesTxt: {
 		fontSize: 12,
 		color: 'black',
+
 	},
 
 	btnView: {
@@ -139,19 +160,19 @@ const styles = StyleSheet.create({
 	},
 
 	image: {
-		borderRadius: 100,
-		width: 130,
-		height: 230,
-		resizeMode: 'cover',
-		justifyContent: 'center',
+		width: 140,
+		height: 200,
+		margin: 10,
+		padding: 5
 	},
 
 	title: {
 		textAlign: "center",
 		marginTop: 20,
 		fontSize: 40,
-		color: '#5f27cd',
+		color: 'black',
 		fontWeight: 'bold',
+		paddingTop: 20,
 	
 	},
 

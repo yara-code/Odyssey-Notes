@@ -7,6 +7,8 @@ import { Dimensions,Text, KeyboardAvoidingView, StyleSheet, TextInput, View } fr
 import { Icon } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import {LinearGradient} from 'expo-linear-gradient'
+
 export default function CreateNote() {
 	const [ note, setNote ] = useState("")
 	const navigation = useNavigation()
@@ -25,28 +27,42 @@ export default function CreateNote() {
 
 	return (
 		<View style={styles.container}>
-
-			<View style={styles.top}>
-
-				<Icon
-					style={styles.btn}
-					name='save'
-					type='font-awesome'
-					color='#ff9f1a'
-					size= '35'
-					onPress={saveNote}
-				/>
-			</View>
+			<LinearGradient
+			colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
 			
-			
+			>
+				<View style={styles.nav}>
+					<Icon
+						style={styles.icon}
+						name='arrow-left'
+						type='font-awesome'
+						color='black'
+						size= '30'
+						onPress={() => navigation.navigate('Home')}
+					/>
+					<Text style={styles.title}> NotePad </Text>
+					<Icon
+						style={styles.icon}
+						name='save'
+						type='font-awesome'
+						color='black'
+						size= '40'
+						onPress={saveNote}
+					/>
+
+				</View>
+				
+			</LinearGradient>
+						
 			<TextInput
 				value={note}
 				onChangeText={setNote}
-				style={{ color: "black", fontSize: 20 }}
+				style={{ color: "black", fontSize: 20, padding: 10 }}
 				multiline={true}
 				autoFocus
-				maxLength= '610'
-				selectionColor='#ff9f1a'
+				maxLength= '810'
+				selectionColor='#6536FF'
 			/>	
 			
 		</View>
@@ -56,15 +72,23 @@ export default function CreateNote() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#c8d6e5',
+		backgroundColor: '#dfe6e9',
 		color: "white",
-		padding: 10,
-		paddingTop: 10,
 	},
 	
 	top: {
 		flexDirection: 'row',
-		justifyContent: 'space-evenly'
+		justifyContent: 'center',
+		paddingTop: 10
+		
+	},
+
+	nav: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingTop: 40,
+		marginLeft: 20,
+		marginRight: 20,
 	},
 
 	topTxt: {
@@ -73,18 +97,16 @@ const styles = StyleSheet.create({
 		marginVertical: 20
 	},
 
-	btn: {
-		backgroundColor: '#222f3e',
-		marginLeft: 'auto',
-		padding: 10,
-		borderRadius: 100,
+	icon: {
+		marginTop: 5
 	},
+	
+	title: {
+		textAlign: "center",
+		fontSize: 40,
+		color: 'black',
+		fontWeight: 'bold',
 
-	card: {
-		padding: 5,
-		width: 40,
-		height: 60,
-		borderRadius: 10,
-		backgroundColor: '#f0932b'
-	}
+	},
+	
 })
