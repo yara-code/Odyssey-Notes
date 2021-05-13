@@ -46,7 +46,6 @@ export default function Mainpage() {
 		navigation.navigate('News', {newsfeed})
 		
     }
-    
 
 	return (
 		<View style={styles.mainView }>
@@ -69,6 +68,14 @@ export default function Mainpage() {
 						color='#5f27cd'
 						onPress={newsButtonHandler}
 					/>
+						<Icon
+						style={styles.btn}
+						name='cloud'
+						type='font-awesome'
+						color='#5f27cd'
+						size= '45'
+						onPress={() => navigation.navigate('Weather')}
+					/>
 				</View>
 				
 			
@@ -80,9 +87,6 @@ export default function Mainpage() {
 				renderItem={renderItem}
 				numColumns='2'
 			/>
-
-			
-			
 		</View>
 	)
 }

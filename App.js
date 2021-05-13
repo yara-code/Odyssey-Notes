@@ -8,6 +8,8 @@ import Mainpage from './components/Mainpage';
 import Settings from './components/Settings';
 import Note from './components/Note';
 import News from './components/News';
+import Weather from './components/Weather';
+
 import { SevtyleSheet } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -57,6 +59,12 @@ export default function App() {
               <Stack.Screen 
               name='News' 
               component={News}
+              options={{
+                cardStyleInterpolator: forFade
+              }} />
+               <Stack.Screen 
+              name='Weather' 
+              component={Weather}
               options={{
                 cardStyleInterpolator: forFade
               }} />
