@@ -24,11 +24,8 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator 
             initialRouteName="Home"
-            headerMode="screen"
-            screenOptions={{
-            headerTintColor: 'purple',
-            headerStyle: { backgroundColor: '#00a8ff' },
-            }}
+            headerMode="none"
+            
             >
 
             <Stack.Screen name='Home' options={{title: 'Odyssey Notes'}} component={Mainpage} />
