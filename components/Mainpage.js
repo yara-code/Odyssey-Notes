@@ -12,7 +12,7 @@ import {LinearGradient} from 'expo-linear-gradient'
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
 	const navigation = useNavigation();
-
+	const [darkMode,setDarkMode] = useState(false)
 	useFocusEffect(
 		React.useCallback(() => {
 			getNotes()
@@ -24,6 +24,7 @@ export default function Mainpage() {
 			setNotes(JSON.parse(notes))
 		})
 	}
+	
 	const image= {uri: "https://thumbs.dreamstime.com/b/grid-paper-abstract-striped-background-color-horizontal-lines-geometric-seamless-pattern-school-wallpaper-textures-grid-184815619.jpg" }
 
 	const renderItem = ({ item, index }) => (
@@ -85,6 +86,10 @@ export default function Mainpage() {
 						color='#5f27cd'
 						onPress={newsButtonHandler}
 					/>
+				</View>
+
+				<View style={styles.btnView}>
+				<Text style={styles.headerText}> Weather: </Text>
 						<Icon
 						style={styles.btn}
 						name='cloud'
@@ -92,9 +97,8 @@ export default function Mainpage() {
 						color='#5f27cd'
 						size= '45'
 						onPress={() => navigation.navigate('Weather')}
-					/>
+					/>					
 				</View>
-				
 
 			<List
 				style={styles.notescontainer}
