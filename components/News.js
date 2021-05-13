@@ -1,60 +1,199 @@
 import React, { useState, useEffect } from 'react'
-import {View, StyleSheet, Text, ActivityIndicator, FlatList,Dimensions, Image} from 'react-native'
+import {View, StyleSheet, Text, Pressable, FlatList,Dimensions, Image, Modal} from 'react-native'
 const {width,height} = Dimensions.get('window')
-
+import { colors, Icon } from 'react-native-elements'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export default function News(props) {
-    console.log(props)
+
     let resultPacket = props.route.params.newsfeed
     let resultsArray = resultPacket;
+    console.log(resultsArray)
+
+    const [modalVisible, setModalVisible] = useState(false)
 
     const Item = ({data}) => (
-        <View style={styles.container}>
-            <Image style={styles.poster} source={{uri: data.urlToImage}}/>
-            <Text>{data.content}</Text>
-            {/* <Text style={styles.title}>{data.author}</Text>
-            <Text style={styles.title}>{data.description}</Text>
-            <Text style={styles.title}>{data.publishedAt}</Text>
-            <Text style={styles.title}>{data.title}</Text>
-            <Text style={styles.title}>{data.url}</Text> */}
-        </View>
+        <Pressable
+                // style={[styles.button, styles.buttonOpen]}
+                onPress={() => setModalVisible(true)}
+            >
+            <View style={styles.container}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Image style={styles.poster} source={{uri: data.urlToImage}}/>
+                        <Text style={styles.newsTitle}>{data.title}</Text>
+                        <Text>{data.content}</Text> 
+                        <Text style={styles.moreInfotxt}>{data.author}</Text>
+                        <Text style={styles.moreInfotxt}>{data.description}</Text>
+                        <Text style={styles.moreInfotxt}>{data.publishedAt}</Text>
+                        <Text style={styles.moreInfotxt}>{data.url}</Text>
+
+                        <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => setModalVisible(!modalVisible)}
+                        >
+                        <Text style={styles.textStyle}>Hide Modal</Text>
+                        </Pressable>
+
+                    </View>
+                    </View>
+                </Modal>
+                
+                <Image style={styles.poster} source={{uri: data.urlToImage}}/>
+                <Text style={styles.newsTitle}>{data.title}</Text>
+            
+            </View>
+        </Pressable>
     )
 
     const renderList = ({item}) => <Item data={item} />;
 
     return (
-        <View>
-            <View style={styles.safeareaview}>
-                <FlatList
-                    data={resultsArray}
-                    renderItem={renderList}
-                />
-            </View> 
+        <View style={styles.mc}>
+            <LinearGradient
+			colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+			
+			>
+				<View style={styles.nav}>
+                    <Icon
+						style={styles.icon}
+						name='arrow-left'
+						type='font-awesome'
+						color='black'
+						size= '30'
+						onPress={() => props.navigation.navigate('Home')}
+					/>
+					<Text style={styles.title}> World News </Text>
+					
+
+				</View>
+				
+			</LinearGradient>
+
+                <View style={styles.safeareaview}>
+                    <FlatList
+                        data={resultsArray}
+                        renderItem={renderList}
+                        horizontal={false}
+                        numColumns= '2'
+                    />
+                </View>
+
+             
         </View>
         
     )
 }
 
 const styles = StyleSheet.create({
+    mc: {
+        backgroundColor: 'black',
+    },
+
     safeareaview: {
-        backgroundColor: '#bdc3c7',
-        padding: 20
+        backgroundColor: 'black',
+        marginLeft: 'auto',
+        marginRight: 'auto',
     },
     container: {
         alignContent: 'center',
         margin: 20,
-        backgroundColor: '#273c75',
+        width:150,
+        height:200,
+        backgroundColor: '#74b9ff',
+        borderColor: '#6c5ce7',
         borderStyle: 'solid',
         borderWidth:3,
         borderRadius: 20,
+        padding: 5
     },
     poster: {
-        width: 230,
-        height: 300,
+        width: 120,
+        height: 80,
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginBottom: 20,
+        margin: 10
     },
+    nav: {
+		flexDirection: 'row',
+		textAlign: 'center',
+		paddingTop: 40,
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
+        alignContent: 'space-between'
+	},
+    title: {
+		fontSize: 40,
+		color: 'black',
+		fontWeight: 'bold',
+        marginLeft: 52,
+        // marginRight: 'auto',
+	},
+    icon: {
+		marginTop: 5,
+        marginLeft: 10
+	},
+    newsTitle: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center'
+    },
+    enteredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      },
+      moreInfotxt: {
+          fontSize: 10,
+      }
+    
 })
 // useEffect( () => {
     //         async function fetchData() {

@@ -32,28 +32,36 @@ export default function CreateNote() {
 			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
 			
 			>
-				<Text style={styles.title}> Notepad </Text>
+				<View style={styles.nav}>
+					<Icon
+						style={styles.icon}
+						name='arrow-left'
+						type='font-awesome'
+						color='black'
+						size= '30'
+						onPress={() => navigation.navigate('Home')}
+					/>
+					<Text style={styles.title}> NotePad </Text>
+					<Icon
+						style={styles.icon}
+						name='save'
+						type='font-awesome'
+						color='black'
+						size= '40'
+						onPress={saveNote}
+					/>
+
+				</View>
+				
 			</LinearGradient>
-			<View style={styles.top}>
-			
-				<Icon
-					style={styles.btn}
-					name='save'
-					type='font-awesome'
-					color='#17C8FF'
-					size= '30'
-					onPress={saveNote}
-				/>
-			</View>
-			
-			
+						
 			<TextInput
 				value={note}
 				onChangeText={setNote}
 				style={{ color: "black", fontSize: 20, padding: 10 }}
 				multiline={true}
 				autoFocus
-				maxLength= '610'
+				maxLength= '810'
 				selectionColor='#6536FF'
 			/>	
 			
@@ -75,44 +83,30 @@ const styles = StyleSheet.create({
 		
 	},
 
+	nav: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingTop: 40,
+		marginLeft: 20,
+		marginRight: 20,
+	},
+
 	topTxt: {
 		fontSize: 18,
 		fontWeight: 'bold',
 		marginVertical: 20
 	},
 
-	btn: {
-		backgroundColor: 'black',
-		marginLeft: 'auto',
-		padding: 10,
-		borderRadius: 20,
+	icon: {
+		marginTop: 5
 	},
-
-	card: {
-		padding: 5,
-		width: 40,
-		height: 60,
-		borderRadius: 10,
-		backgroundColor: '#f0932b'
-	},
-
+	
 	title: {
 		textAlign: "center",
-		marginTop: 20,
 		fontSize: 40,
 		color: 'black',
 		fontWeight: 'bold',
-		paddingTop: 20,
-	
+
 	},
 	
-	headerText: {
-		fontSize: 24,
-		marginVertical: 8,
-		borderRadius: 15,
-		borderWidth: 1,
-		borderBottomColor: 'red',
-		borderColor: '#5f27cd',
-		padding: 5
-	},
 })
