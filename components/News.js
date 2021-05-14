@@ -86,6 +86,7 @@ export default function News(props) {
                         renderItem={renderList}
                         horizontal={false}
                         numColumns= '2'
+                        keyExtractor={(item) => item.url}
                     />
                 </View>
 

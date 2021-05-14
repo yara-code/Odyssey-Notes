@@ -3,6 +3,11 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { Button, Text } from "@ui-kitten/components"
 import React, { useState } from "react"
 import { StyleSheet, View } from "react-native"
+import {LinearGradient} from 'expo-linear-gradient'
+import { ImageBackground } from 'react-native';
+
+import { colors, Icon } from 'react-native-elements'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Note({ route }) {
 	const [ notes, setNotes ] = useState([])
@@ -27,16 +32,41 @@ export default function Note({ route }) {
 	}
 
 	return (
-		<View style={{ backgroundColor: "#222B45", flex: 1 }}>
-			<Text style={styles.title} category="h1">
-				Notes
-			</Text>
-			<Text style={{ fontSize: 22, margin: 20 }}>{singleNote}</Text>
-			<View style={styles.bottom}>
-				<Button onPress={deleteNote} style={styles.button}>
-					Delete
-				</Button>
-			</View>
+		<View style={styles.container}>
+			<LinearGradient
+			colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+			start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+			
+			>
+				<View style={styles.nav}>
+                    <Icon
+						style={styles.icon}
+						name='arrow-left'
+						type='font-awesome'
+						color='black'
+						size= '30'
+						onPress={() => navigation.navigate('Home')}
+					/>
+					<Text style={styles.title}> Note </Text>
+					
+
+				</View>
+			</LinearGradient>
+
+				
+				<View style={styles.noteContainer}>
+					<Text style={styles.noteTxt}>{singleNote}</Text>
+					<LinearGradient
+						colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
+						start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+						style={styles.buttongrad}
+					>
+						<TouchableOpacity onPress={deleteNote}>
+							<Text style={styles.buttonTxt}>Delete</Text>
+						</TouchableOpacity>
+					</LinearGradient>
+				</View>
+			
 		</View>
 	)
 }
@@ -44,9 +74,13 @@ export default function Note({ route }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center"
+
+		backgroundColor: '#bdc3c7'
+	},
+	noteContainer: {
+		margin: 10,
+		flex: 1,
+		backgroundColor: '#bdc3c7'
 	},
 	item: {
 		marginVertical: 4
@@ -55,7 +89,50 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		marginTop: 50
 	},
-	notes: {
-		fontSize: 24
+	noteTxt: {
+		fontSize: 18,
+		color: 'black'
+	},
+
+	bg: {
+		width: 400,
+		height: 805,
+
+	},
+	nav: {
+		flexDirection: 'row',
+		textAlign: 'center',
+		paddingTop: 40,
+        alignContent: 'space-between'
+	},
+	title: {
+		fontSize: 40,
+		color: 'black',
+		fontWeight: 'bold',
+        marginLeft: 118,
+        // marginRight: 'auto',
+	},
+	icon: {
+		marginTop: 5,
+        marginLeft: 10
+	},
+	
+	buttongrad: {
+		width: 120,
+		height: 60,
+		borderRadius: 10,
+		borderWidth: 2,
+		justifyContent: 'center',
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		marginTop: 'auto'
+	},
+
+	buttonTxt: {
+		color: 'black',
+		textAlign: 'center',
+		fontWeight: 'bold',
+		fontSize: 26,
+
 	}
 })
