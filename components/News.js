@@ -78,9 +78,11 @@ const News = (props) => {
 					        >
                                 <TouchableOpacity 
                                  onPress={ async function saveNote() {
+                                        const string = newsDetails[0].title + newsDetails[0].content +  newsDetails[0].author +  newsDetails[0].publishedAt +
+                                        newsDetails[0].url
                                         const value = await AsyncStorage.getItem("NEWSNOTES")
                                         const n = value ? JSON.parse(value) : []
-                                        n.push(newsDetails[0].content)
+                                        n.push(string)
                                         await AsyncStorage.setItem("NEWSNOTES", JSON.stringify(n)).then(() => props.navigation.navigate('Home'))
                                         setNewsDetails(n)
                                         console.log(n)
