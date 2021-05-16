@@ -72,28 +72,33 @@ export default class Weather extends React.Component{
             />
 					  <Text style={styles.title}> Weather </Text>
             <Icon
-						style={styles.icon}
-						name='cloud'
-						type='font-awesome'
-						color='black'
-						size= '40'
-					/>
+              style={styles.icon}
+              name='cloud'
+              type='font-awesome'
+              color='black'
+              size= '40'
+					  />
+
+          <TouchableOpacity onPress={()=>this.toggleTheme()}>
+            {/* <Text style={[styles.text_color, {color: this.state.toggle ? 'white' : 'black'}]}> ChangeTheme </Text> */}
+            <Icon
+              style={[styles.text_color, {color: this.state.toggle ? 'white' : 'black'}, {marginLeft: 30}]}
+              name='sunny-outline'
+              type='ionicon'
+              color='black'
+              size= '40'
+					  />
+          </TouchableOpacity>
+
 				  </View>
         </LinearGradient>
-        <TouchableOpacity onPress={()=>this.toggleTheme()}>
-            <Text style={[styles.text_color, {color: this.state.toggle ? 'white' : 'black'}]}> ChangeTheme </Text>
-          </TouchableOpacity>
+
         <View style={styles.Search_Box_View}>
           <TextInput placeholder="Search" placeholderTextColor="#4C64FF" style={styles.Search_Box} onChangeText={(text)=>this.setState({city : text})} />
             <TouchableOpacity style={styles.button_touch} onPress={this.fetch_weather}>
               <Icon name="search" size={35} color="#00FFFF" />
             </TouchableOpacity>
           </View>
-          {/* <View style={[styles.container,{backgroundColor: this.state.toggle ? 'white' : 'black'}]}> */}
-            {/* <TouchableOpacity onPress={()=>this.toggleTheme()}>
-              <Text style={[styles.text_color, {color: this.state.toggle ? 'black' : 'white'}]}> ChangeTheme </Text> */}
-            {/* </TouchableOpacity> */}
-          {/* </View> */}
         <View style={styles.Weather_Box_Main}>
           <View style={styles.Weather_Holder_View}>
               <Image tintColor='#FFF' source={{uri:"http://openweathermap.org/img/wn/"+this.state.icon+"@2x.png",}} style={styles.Weather_Image}/>
@@ -202,46 +207,42 @@ const styles = StyleSheet.create({
   Info_Holder_Veiw:{
     height:"80%",
     width:"90%",
-    // backgroundColor: 'rgba(255, 255, 255, 0.05)',
     backgroundColor: '#4C64FF',
     borderColor: '#6c5ce7',
     borderStyle: 'solid',
     borderRadius:45,
-    marginTop:-55
+    marginTop:-55,
   },
   Main_Text:{
-    fontSize:30,
+    fontSize:40,
     color:"black",
-    marginLeft:"8%",
+    // marginLeft:"8%",
     marginTop:"3%",
     fontWeight:"bold",
     textAlign:"center"
   },
   description_text:{
     fontSize:22,
+    textTransform: 'uppercase',
     color:"black",
-    marginLeft:"8%",
     marginTop:"3%",
     textAlign:"center"
   },
   humidity_text:{
     fontSize:22,
     color:"black",
-    marginLeft:"8%",
     marginTop:"3%",
     textAlign:"center"
   },
   pressure_text:{
     fontSize:22,
     color:"black",
-    marginLeft:"8%",
     marginTop:"3%",
     textAlign:"center"
   },
   visibility_text:{
     fontSize:22,
     color:"black",
-    marginLeft:"8%",
     marginTop:"3%",
     textAlign:"center"
   },
@@ -250,18 +251,16 @@ const styles = StyleSheet.create({
 		color: 'black',
 		fontWeight: 'bold',
     marginLeft: 52,
-        // marginRight: 'auto',
 	},
   nav: {
 		flexDirection: 'row',
 		textAlign: 'center',
 		paddingTop: 40,
-        // marginLeft: 'auto',
-        // marginRight: 'auto',
-        alignContent: 'space-between'
+    alignContent: 'space-between'
 	},
   icon: {
 		marginTop: 5,
-    marginRight: 10
+    marginLeft: 10
 	},
+  
 })
