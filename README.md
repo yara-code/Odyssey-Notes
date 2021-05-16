@@ -28,7 +28,8 @@ There is a arrow on the top left and if you click on it, it will take you back t
 
 For example, lets say you have a list of notes listed in the main page. To delete a note all you have to do is to click on a particular note and it will take you to the Note page. Note page has a delete button and if you click on that delete button it will delete the note and it will take you back to the main page. If you don’t click on delete , in order for you to go back to the main page, click on the arrow that is shown on the top left.
 
-    		This is the functionality of Odyssey Notes App.
+## This is the functionality of Odyssey Notes App.
 
-https://expo.io/@cmendo67/projects/odyssey-notes
-https://expo.io/@gonzo-32/projects/odyssey-notes
+- https://expo.io/@cmendo67/projects/odyssey-notes
+
+* https://expo.io/@gonzo-32/projects/odyssey-notes
