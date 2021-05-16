@@ -76,8 +76,8 @@ const News = (props) => {
 					        >
                                 <TouchableOpacity 
                                  onPress={ async function saveNote() {
-                                        const string = newsDetails[0].title + newsDetails[0].content +  newsDetails[0].author +  newsDetails[0].publishedAt +
-                                        newsDetails[0].url
+                                        const string = "Title: " + newsDetails[0].title + "\n" + "\n" + "Content: " + newsDetails[0].content + "\n" + "\n" + "Author: " + newsDetails[0].author + "\n" + "\n" + "Published: " +  newsDetails[0].publishedAt +
+                                         "\n" + "\n" + "URL: " + newsDetails[0].url
                                         const value = await AsyncStorage.getItem("NOTES")
                                         const n = value ? JSON.parse(value) : []
                                         n.push(string)

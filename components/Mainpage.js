@@ -12,8 +12,6 @@ import {LinearGradient} from 'expo-linear-gradient'
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
 	
-	const [newsDetails, setNewsDetails] = useState([])
-
 	const navigation = useNavigation();
 	// const [darkMode,setDarkMode] = useState(false)
 	useFocusEffect(
