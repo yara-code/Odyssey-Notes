@@ -4,7 +4,8 @@ const {width,height} = Dimensions.get('window')
 import { colors, Icon } from 'react-native-elements'
 import {LinearGradient} from 'expo-linear-gradient'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
+import { useNavigation } from "@react-navigation/native"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const News = (props) => {
 
@@ -15,16 +16,19 @@ const News = (props) => {
     const [modalVisible, setModalVisible] = useState(false)
 
     const [newsDetails, setNewsDetails] = useState([{'author':null,"content": null,"description": null,}])
+    
+    // const [ note, setNote ] = useState("")
 
     const Item = ({data}) => (
         <View> 
             <TouchableOpacity
                 // style={[styles.button, styles.buttonOpen]}
                 // onPress={() => setModalVisible(true)}
+                //yahoo api key = f5a99449f3fe4087ac8091a3009b0519
                 onPress={ async function articleClickHandler() {
                     let url = 'https://newsapi.org/v2/top-headlines?country=us&'
                     let article = 'q=' + data.title;
-                    let key = '&apiKey=f5037afaa4c647dfa836977a061e09e8'
+                    let key = '&apiKey=3ddc86bc606a4606bea5004e0614a6cf'
             
                     const res = await fetch(url+article+key)
             
@@ -72,9 +76,19 @@ const News = (props) => {
                                 start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
                                 style={styles.buttongrad}
 					        >
-                                <TouchableOpacity>
+                                <TouchableOpacity 
+                                 onPress={ async function saveNote() {
+                                        const value = await AsyncStorage.getItem("NEWSNOTES")
+                                        const n = value ? JSON.parse(value) : []
+                                        n.push(newsDetails[0].content)
+                                        await AsyncStorage.setItem("NEWSNOTES", JSON.stringify(n)).then(() => props.navigation.navigate('Home'))
+                                        setNewsDetails(n)
+                                        console.log(n)
+                                        }}
+                                >
                                     <Text style={styles.buttonTxt}>Save</Text>
                                 </TouchableOpacity>
+
 					        </LinearGradient>
 
                             <LinearGradient

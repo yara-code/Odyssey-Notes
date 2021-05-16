@@ -11,17 +11,27 @@ import {LinearGradient} from 'expo-linear-gradient'
 
 export default function Mainpage() {
 	const [ notes, setNotes ] = useState([])
+	
+	const [newsDetails, setNewsDetails] = useState([])
+
 	const navigation = useNavigation();
-	const [darkMode,setDarkMode] = useState(false)
+	// const [darkMode,setDarkMode] = useState(false)
 	useFocusEffect(
 		React.useCallback(() => {
 			getNotes()
+			getNewsNotes()
 		}, [])
 	)
 
 	const getNotes = () => {
 		AsyncStorage.getItem("NOTES").then((notes) => {
 			setNotes(JSON.parse(notes))
+		})
+	}
+
+	const getNewsNotes = () => {
+		AsyncStorage.getItem("NEWSNOTES").then((newsDetails) => {
+			setNewsDetails(JSON.parse(newsDetails))
 		})
 	}
 	
@@ -103,6 +113,12 @@ export default function Mainpage() {
 			<List
 				style={styles.notescontainer}
 				data={notes}
+				renderItem={renderItem}
+				numColumns='2'
+			/>
+			<List
+				style={styles.notescontainer}
+				data={newsDetails}
 				renderItem={renderItem}
 				numColumns='2'
 			/>
