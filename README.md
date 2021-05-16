@@ -1,4 +1,4 @@
-    	Odyssey Notes
+    	                                                Odyssey Notes
 
 Our Notes App is called Odyssey Notes. You are able to create a note and be able to delete a note. Odyssey notes app has two other features. You can check the weather and you can search a city or country to check the weather. Not only that but odyssey notes app also has a feature that allows you to check the current news. You have a list of news displayed to you and you can click on a particular news and save that particular news to your notes app and it will display it in the list of all your notes in the main page of the app.
 
@@ -26,3 +26,6 @@ Deleting a Note:
 For example, lets say you have a list of notes listed in the main page. To delete a note all you have to do is to click on a particular note and it will take you to the Note page. Note page has a delete button and if you click on that delete button it will delete the note and it will take you back to the main page. If you don’t click on delete , in order for you to go back to the main page, click on the arrow that is shown on the top left.
 
     		This is the functionality of Odyssey Notes App.
+
+https://expo.io/@cmendo67/projects/odyssey-notes
+https://expo.io/@gonzo-32/projects/odyssey-notes
