@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateNotes from './components/CreateNotes';
 import Mainpage from './components/Mainpage';
-import Settings from './components/Settings';
 import Note from './components/Note';
 import News from './components/News';
 import Weather from './components/Weather';
@@ -42,13 +41,6 @@ export default function App() {
               <Stack.Screen 
               name='Note' 
               component={Note}
-              options={{
-                cardStyleInterpolator: forFade
-              }} />
-
-              <Stack.Screen 
-              name='Settings' 
-              component={Settings}
               options={{
                 cardStyleInterpolator: forFade
               }} />

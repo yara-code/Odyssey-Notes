@@ -21,9 +21,6 @@ export default function CreateNote() {
 		setNote("")
 	}
 
-	const changeHandler = () => {
-
-	}
 
 	return (
 		<View style={styles.container}>
