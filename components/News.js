@@ -17,8 +17,6 @@ const News = (props) => {
 
     const [newsDetails, setNewsDetails] = useState([{'author':null,"content": null,"description": null,}])
     
-    // const [ note, setNote ] = useState("")
-
     const Item = ({data}) => (
         <View> 
             <TouchableOpacity
@@ -80,10 +78,10 @@ const News = (props) => {
                                  onPress={ async function saveNote() {
                                         const string = newsDetails[0].title + newsDetails[0].content +  newsDetails[0].author +  newsDetails[0].publishedAt +
                                         newsDetails[0].url
-                                        const value = await AsyncStorage.getItem("NEWSNOTES")
+                                        const value = await AsyncStorage.getItem("NOTES")
                                         const n = value ? JSON.parse(value) : []
                                         n.push(string)
-                                        await AsyncStorage.setItem("NEWSNOTES", JSON.stringify(n)).then(() => props.navigation.navigate('Home'))
+                                        await AsyncStorage.setItem("NOTES", JSON.stringify(n)).then(() => props.navigation.navigate('Home'))
                                         setNewsDetails(n)
                                         console.log(n)
                                         }}

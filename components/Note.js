@@ -19,7 +19,6 @@ export default function Note({ route }) {
 	useFocusEffect(
 		React.useCallback(() => {
 			getNotes()
-			getNewsNotes()
 		}, [])
 	)
 
@@ -29,18 +28,9 @@ export default function Note({ route }) {
 		})
 	}
 
-	const getNewsNotes = () => {
-		AsyncStorage.getItem("NEWSNOTES").then((newsDetails) => {
-			setNewsDetails(JSON.parse(newsDetails))
-		})
-	}
-
 	const deleteNote = async () => {
 		const newNotes = await notes.filter((note) => note !== singleNote)
 		await AsyncStorage.setItem("NOTES", JSON.stringify(newNotes)).then(() => navigation.navigate("Home"))
-
-		const newsNotes = await newsDetails.filter((note) => note !== singleNote)
-		await AsyncStorage.setItem("NEWSNOTES", JSON.stringify(newsNotes)).then(() => navigation.navigate("Home"))
 	}
 
 	return (
@@ -77,15 +67,6 @@ export default function Note({ route }) {
 							<Text style={styles.buttonTxt}>Delete</Text>
 						</TouchableOpacity>
 					</LinearGradient>
-					{/* <LinearGradient
-						colors={['#00FFFF', '#17C8FF', '#329BFF', '#4C64FF', '#6536FF', '#8000FF']}
-						start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
-						style={styles.buttongrad}
-					>
-						<TouchableOpacity onPress={deleteNewsNote}>
-							<Text style={styles.buttonTxt}>DeleteNewsNote</Text>
-						</TouchableOpacity>
-					</LinearGradient> */}
 				</View>
 			
 		</View>

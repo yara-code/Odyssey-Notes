@@ -19,7 +19,6 @@ export default function Mainpage() {
 	useFocusEffect(
 		React.useCallback(() => {
 			getNotes()
-			getNewsNotes()
 		}, [])
 	)
 
@@ -29,12 +28,6 @@ export default function Mainpage() {
 		})
 	}
 
-	const getNewsNotes = () => {
-		AsyncStorage.getItem("NEWSNOTES").then((newsDetails) => {
-			setNewsDetails(JSON.parse(newsDetails))
-		})
-	}
-	
 	const image= {uri: "https://thumbs.dreamstime.com/b/grid-paper-abstract-striped-background-color-horizontal-lines-geometric-seamless-pattern-school-wallpaper-textures-grid-184815619.jpg" }
 
 	const renderItem = ({ item, index }) => (
@@ -113,12 +106,6 @@ export default function Mainpage() {
 			<List
 				style={styles.notescontainer}
 				data={notes}
-				renderItem={renderItem}
-				numColumns='2'
-			/>
-			<List
-				style={styles.notescontainer}
-				data={newsDetails}
 				renderItem={renderItem}
 				numColumns='2'
 			/>
