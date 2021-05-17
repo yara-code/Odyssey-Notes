@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     borderColor:"#8000FF",
     borderWidth:1,
     borderRadius:15,
-    color:"#FFF",
+    color:"#8000FF",
     paddingHorizontal:15
   },
   button_touch:{
