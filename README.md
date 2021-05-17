@@ -1,5 +1,4 @@
 # Odyssey Notes :memo:
-:pencil:
 
 # Authors :boy: :boy: :girl:
 * [Heriberto Gonzalez](https://github.com/gonzo-32/) :smiling_imp:
