@@ -1,7 +1,7 @@
 # Odyssey Notes
 
 # Authors
-* [Heriberto Gonzalez](https://github.com/gonzo-32/)
+* [Heriberto Gonzalez](https://github.com/gonzo-32/) :smiling_imp:
 * [Carlos Mendoza](https://github.com/cmendo67)
 * [Yara Ajjawi](https://github.com/yara-code)
 
