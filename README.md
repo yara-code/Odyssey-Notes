@@ -1,7 +1,7 @@
 # Odyssey Notes :memo:
 :pencil:
 
-# Authors :family_man_boy: :family_man_boy: :family_woman_girl:
+# Authors :boy: :boy: :girl:
 * [Heriberto Gonzalez](https://github.com/gonzo-32/) :smiling_imp:
 * [Carlos Mendoza](https://github.com/cmendo67) :ghost:
 * [Yara Ajjawi](https://github.com/yara-code) :heart_decoration:
