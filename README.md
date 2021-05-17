@@ -1,9 +1,10 @@
-# Odyssey Notes
+# Odyssey Notes :memo:
+:pencil:
 
 # Authors
 * [Heriberto Gonzalez](https://github.com/gonzo-32/) :smiling_imp:
-* [Carlos Mendoza](https://github.com/cmendo67)
-* [Yara Ajjawi](https://github.com/yara-code)
+* [Carlos Mendoza](https://github.com/cmendo67) :ghost:
+* [Yara Ajjawi](https://github.com/yara-code) :heart_decoration:
 
 Our Notes App is called Odyssey Notes. You are able to create a note and be able to delete a note. Odyssey notes app has two other features. You can check the weather and you can search a city or country to check the weather. Not only that but odyssey notes app also has a feature that allows you to check the current news. You have a list of news displayed to you and you can click on a particular news and save that particular news to your notes app and it will display it in the list of all your notes in the main page of the app.
 
