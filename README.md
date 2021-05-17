@@ -37,7 +37,6 @@ For example, lets say you have a list of notes listed in the main page. To delet
 | | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604" alt="Odyssey Notes" src="Images/MainPage.png">  Odyssey Notes | <img width="1604" alt="Odyssey Notes" src="Images/NotePad.png"> Writing Notes |<img width="1604" alt="Odyssey Notes" src="Images/Note.jpeg"> Reading Note |<img width="1604" alt="Odyssey Notes" src="Images/url.jpeg"> Full Article
-| <img width="1604" alt="Odyssey Notes" src="Images/Modal.jpeg"> News Preview 
-|<img width="1604" alt="Odyssey Notes" src="Images/News.jpeg"> World News 
+| <img width="1604" alt="Odyssey Notes" src="Images/Modal.jpeg"> News Preview |<img width="1604" alt="Odyssey Notes" src="Images/News.jpeg"> World News 
 |<img width="1604" alt="Odyssey Notes" src="Images/DarkMode.jpeg"> Weather: Dark Mode 
 |<img width="1604" alt="Odyssey Notes" src="Images/lightMode.jpeg"> Weather: Light Mode   
