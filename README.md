@@ -16,14 +16,14 @@ Odyssey Notes is displayed as the title on top and there are three icons below t
 
 When you click on New Notes Icon it will take you to the NotePad page. The title of that page is NotePad. In that page you start to write anything you want and once you finished writing your notes. To save it, you have to click on the save Icon on the top right of NotePad page. Once you click that save Icon it will take you back to the main page and it will display the note that you have just created.
 
-## News Icon: :newspaper: :cloud: :cloud_with_lightning_and_rain: :snowflake:
+## News Icon: :newspaper:
 
 When you click on News Icon it will take you to the News page. The title of that page is World News. In that page a list of news articles are listed to you and if you click on one specifically then it will show more details based on that news article.
 When you click on a news article there are three buttons displayed to you: close, save, full article. When you click on close, then it will close that news article and it takes you back to the World News page.
 When you click on Save then the contents of that news article is saved as a note for you and is listed in the rest of the notes list in the main page.
 When you click on Full Article it will take you to the actual URL page of that particle news article that you clicked on. That URL that you are taken to will display the full article to you.When you are on the World News page there is a arrow on top left and if you click on it then it will take you back to the main page of the odyssey notes app.
 
-## Weather Icon: :sunny:
+## Weather Icon: :sunny: :cloud: :cloud_with_lightning_and_rain: :snowflake:
 
 When you click on Weather Icon it will take you to the Weather page. The title of that page is Weather. In that page the weather of a particular city or country is shown with the name of the city or country with the temperature. Not only that but it also displays Humidity, Pressure, and visibuility.
 There is also text input for search. That search allows you to search for a city or country to check weather and as you can see, there is search Icon next to it. You have to click on that search Icon in order to search. Once you click on it it will display the new weather of that city/country that you searched for.
