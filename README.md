@@ -30,11 +30,6 @@ There is also text input for search. That search allows the user to search for a
 
 To delete a note, the user will have to select a note, and they will be taken to that note page. The user can then click the delete button on the page, and once the note is deleted, they will be directed back to the main page.
 
-
-## This is the functionality of Odyssey Notes App.
-
-* https://expo.io/@gonzo-32/projects/odyssey-notes
-
 |                                                                                |                                                                               |                                                                                      |                                                                                        |
 | :----------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
 | <img width="1604" alt="Odyssey Notes" src="Images/MainPage.png"> Odyssey Notes | <img width="1604" alt="Odyssey Notes" src="Images/NotePad.png"> Writing Notes |      <img width="1604" alt="Odyssey Notes" src="Images/Note.jpeg"> Reading Note      |       <img width="1604" alt="Odyssey Notes" src="Images/url.jpeg"> Full Article        |
